@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		D03B7EFB1DFE33DE00AF7C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B7EFA1DFE33DE00AF7C16 /* AppDelegate.swift */; };
 		D03B7EFD1DFE33DE00AF7C16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B7EFC1DFE33DE00AF7C16 /* ViewController.swift */; };
-		D03B7F001DFE33DE00AF7C16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03B7EFE1DFE33DE00AF7C16 /* Main.storyboard */; };
 		D03B7F021DFE33DE00AF7C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03B7F011DFE33DE00AF7C16 /* Assets.xcassets */; };
 		D03B7F051DFE33DE00AF7C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03B7F031DFE33DE00AF7C16 /* LaunchScreen.storyboard */; };
 		D03B7F101DFE33DE00AF7C16 /* iBeaconCentralDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B7F0F1DFE33DE00AF7C16 /* iBeaconCentralDemoTests.swift */; };
+		D03B7F1B1DFE3B0F00AF7C16 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B7F1A1DFE3B0F00AF7C16 /* iBeacon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +29,13 @@
 		D03B7EF71DFE33DE00AF7C16 /* iBeaconCentralDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconCentralDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03B7EFA1DFE33DE00AF7C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D03B7EFC1DFE33DE00AF7C16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D03B7EFF1DFE33DE00AF7C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D03B7F011DFE33DE00AF7C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03B7F041DFE33DE00AF7C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D03B7F061DFE33DE00AF7C16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D03B7F0B1DFE33DE00AF7C16 /* iBeaconCentralDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconCentralDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03B7F0F1DFE33DE00AF7C16 /* iBeaconCentralDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconCentralDemoTests.swift; sourceTree = "<group>"; };
 		D03B7F111DFE33DE00AF7C16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D03B7F1A1DFE3B0F00AF7C16 /* iBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 			children = (
 				D03B7EFA1DFE33DE00AF7C16 /* AppDelegate.swift */,
 				D03B7EFC1DFE33DE00AF7C16 /* ViewController.swift */,
-				D03B7EFE1DFE33DE00AF7C16 /* Main.storyboard */,
+				D03B7F1A1DFE3B0F00AF7C16 /* iBeacon.swift */,
 				D03B7F011DFE33DE00AF7C16 /* Assets.xcassets */,
 				D03B7F031DFE33DE00AF7C16 /* LaunchScreen.storyboard */,
 				D03B7F061DFE33DE00AF7C16 /* Info.plist */,
@@ -146,6 +146,7 @@
 				TargetAttributes = {
 					D03B7EF61DFE33DE00AF7C16 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 853S365UM8;
 						ProvisioningStyle = Automatic;
 					};
 					D03B7F0A1DFE33DE00AF7C16 = {
@@ -181,7 +182,6 @@
 			files = (
 				D03B7F051DFE33DE00AF7C16 /* LaunchScreen.storyboard in Resources */,
 				D03B7F021DFE33DE00AF7C16 /* Assets.xcassets in Resources */,
-				D03B7F001DFE33DE00AF7C16 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03B7F1B1DFE3B0F00AF7C16 /* iBeacon.swift in Sources */,
 				D03B7EFD1DFE33DE00AF7C16 /* ViewController.swift in Sources */,
 				D03B7EFB1DFE33DE00AF7C16 /* AppDelegate.swift in Sources */,
 			);
@@ -223,14 +224,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D03B7EFE1DFE33DE00AF7C16 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D03B7EFF1DFE33DE00AF7C16 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D03B7F031DFE33DE00AF7C16 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -337,7 +330,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 853S365UM8;
 				INFOPLIST_FILE = iBeaconCentralDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.-.iBeaconCentralDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -349,7 +344,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 853S365UM8;
 				INFOPLIST_FILE = iBeaconCentralDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.-.iBeaconCentralDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -404,6 +401,7 @@
 				D03B7F161DFE33DE00AF7C16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D03B7F171DFE33DE00AF7C16 /* Build configuration list for PBXNativeTarget "iBeaconCentralDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +410,7 @@
 				D03B7F191DFE33DE00AF7C16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
