@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AudioToolbox
 
 class iBeacon: NSObject {
     
@@ -34,7 +35,7 @@ class iBeacon: NSObject {
         }
         
         if #available(iOS 9, *) {
-            self.locationManager.allowsBackgroundLocationUpdates = true
+//            self.locationManager.allowsBackgroundLocationUpdates = true
         }
         
     }
@@ -51,23 +52,44 @@ class iBeacon: NSObject {
             // BeaconのIfentifierを設定.
             let identifierStr: String = "ibeacon Demo"
             
-            let region = CLBeaconRegion(proximityUUID: uuidStr,
-                                        major: CLBeaconMajorValue(1),
-                                        minor: CLBeaconMajorValue(1),
-                                        identifier: identifierStr)
+//            let region = CLBeaconRegion(proximityUUID: uuidStr,
+//                                        major: CLBeaconMajorValue(1),
+//                                        minor: CLBeaconMajorValue(1),
+//                                        identifier: identifierStr)
+            
+            let region = CLBeaconRegion(proximityUUID: uuidStr, identifier: identifierStr)
             
             // ディスプレイがOffでもイベントが通知されるように設定(trueにするとディスプレイがOnの時だけ反応).
             region.notifyEntryStateOnDisplay = false
-            
             // 入域通知の設定.
             region.notifyOnEntry = true
-            
             // 退域通知の設定.
             region.notifyOnExit = true
             
             self.beaconRegions.append(region)
             self.locationManager.startMonitoring(for: region)
+            
+            /*
+             *
+             *
+             */
         }
+    }
+    
+    fileprivate func sendLocalNotificationWithMessage(message: String!) {
+        let notification:UILocalNotification = UILocalNotification()
+        notification.alertBody = message
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.shared.scheduleLocalNotification(notification)
+        
+//        DispatchQueue.main.async {
+//        }
+        
+//        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+//        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+//            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+//        })
+
     }
 
 }
@@ -79,6 +101,7 @@ extension iBeacon: CLLocationManagerDelegate {
         // Rangingを始める
         print("didEnterRegion")
         self.locationManager.startRangingBeacons(in: region as! CLBeaconRegion)
+        self.sendLocalNotificationWithMessage(message: "didEnterRegion")
     }
     
     // 領域から出た際に通知する
@@ -86,6 +109,7 @@ extension iBeacon: CLLocationManagerDelegate {
         
         print("didExitRegion")
         self.locationManager.stopRangingBeacons(in: region as! CLBeaconRegion)
+        self.sendLocalNotificationWithMessage(message: "didExitRegion")
     }
     
     // 領域監視開始
@@ -93,6 +117,10 @@ extension iBeacon: CLLocationManagerDelegate {
         print("didStartMonitoringFor")
         
         self.locationManager.requestState(for: region)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        print("観測の開始に失敗しました！\(error)")
     }
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
@@ -114,10 +142,24 @@ extension iBeacon: CLLocationManagerDelegate {
     
     // 領域内でのビーコン受信
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        print("受信")
+        print(">> didRangeBeacons")
         
         if !beacons.isEmpty {
             print(beacons)
+            
+            // もっとも近いビーコンの特定
+            guard let nearestBeacon = beacons.first else {
+                return
+            }
+            
+            // "相対的な距離" の情報が取れるか確認
+            if nearestBeacon.proximity == .unknown {
+                return
+            }
+
+            if nearestBeacon.proximity == .immediate {
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            }
         }
     }
     

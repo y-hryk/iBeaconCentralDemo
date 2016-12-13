@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navi
         self.window?.makeKeyAndVisible()
         
+        // 通知の設定
+        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
+        UIApplication.shared.registerForRemoteNotifications()
+        
         return true
     }
 
